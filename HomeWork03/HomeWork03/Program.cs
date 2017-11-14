@@ -21,8 +21,21 @@ namespace HomeWork03
         static void Main(string[] args)
         {
             Console.Write("Please, enter the number of news that you want to publish: ");
-            int numberOfNews = Int32.Parse(Console.ReadLine());
-            News[] news = new News[numberOfNews];
+            int numberOfNews = 0;
+            while (true)
+            {
+                int.TryParse(Console.ReadLine(), out numberOfNews);
+                if (numberOfNews > 0) break;
+                else Console.WriteLine("Incorrect number, try again: ");
+            }
+
+            News[] allNews = new News[numberOfNews];
+
+            AddNews(allNews, numberOfNews);
+        }
+
+        static void AddNews(News[] news, int numberOfNews)
+        {
             for (int i = 0; i < numberOfNews; i++)
             {
                 Console.Write("Please, input the type of news (Article, Quote or Picture): ");
@@ -32,7 +45,16 @@ namespace HomeWork03
                 {
                     Article article = new Article();
                     Console.Write("Please, input the Id of Article: ");
-                    article.IdNews = Int32.Parse(Console.ReadLine());
+                    while (true)
+                    {
+                        int.TryParse(Console.ReadLine(), out int idNews);
+                        if (idNews > 0)
+                        {
+                            article.IdNews = idNews;
+                            break;
+                        }
+                        else Console.WriteLine("Incorrect number, try again: ");
+                    }
                     article.PostDate = DateTime.Today.ToString();
                     Console.Write("Please, input the text: ");
                     article.Text = Console.ReadLine();
@@ -48,7 +70,16 @@ namespace HomeWork03
                 {
                     Quotes quote = new Quotes();
                     Console.Write("Please, input the Id of Quote: ");
-                    quote.IdNews = Int32.Parse(Console.ReadLine());
+                    while (true)
+                    {
+                        int.TryParse(Console.ReadLine(), out int idNews);
+                        if (idNews > 0)
+                        {
+                            quote.IdNews = idNews;
+                            break;
+                        }
+                        else Console.WriteLine("Incorrect number, try again: ");
+                    }
                     quote.PostDate = DateTime.Today.ToString();
                     Console.Write("Please, input the text: ");
                     quote.Quote = Console.ReadLine();
@@ -62,7 +93,16 @@ namespace HomeWork03
                 {
                     PicturesNews pictureNews = new PicturesNews();
                     Console.Write("Please, input the Id of Picture News: ");
-                    pictureNews.IdNews = Int32.Parse(Console.ReadLine());
+                    while (true)
+                    {
+                        int.TryParse(Console.ReadLine(), out int idNews);
+                        if (idNews > 0)
+                        {
+                            pictureNews.IdNews = idNews;
+                            break;
+                        }
+                        else Console.WriteLine("Incorrect number, try again: ");
+                    }
                     pictureNews.PostDate = DateTime.Today.ToString();
                     Console.Write("Please, input the url of picture: ");
                     pictureNews.PictureUrl = Console.ReadLine();
@@ -78,7 +118,7 @@ namespace HomeWork03
                     }
                 }
             }
+            
         }
-        
     }
 }
