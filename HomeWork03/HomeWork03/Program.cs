@@ -33,7 +33,6 @@ namespace HomeWork03
 
             AddNews(allNews, numberOfNews);
         }
-
         static void AddNews(News[] news, int numberOfNews)
         {
             for (int i = 0; i < numberOfNews; i++)
@@ -41,84 +40,90 @@ namespace HomeWork03
                 Console.Write("Please, input the type of news (Article, Quote or Picture): ");
                 string type = Console.ReadLine();
 
-                if (type == "Article")
+                switch (type)
                 {
-                    Article article = new Article();
-                    Console.Write("Please, input the Id of Article: ");
-                    while (true)
-                    {
-                        int.TryParse(Console.ReadLine(), out int idNews);
-                        if (idNews > 0)
+                    case "Article" :
+                        Article article = new Article();
+                        Console.Write("Please, input the Id of Article: ");
+                        while (true)
                         {
-                            article.IdNews = idNews;
-                            break;
+                            int.TryParse(Console.ReadLine(), out int idNews);
+                            if (idNews > 0)
+                            {
+                                article.IdNews = idNews;
+                                break;
+                            }
+                            else Console.WriteLine("Incorrect number, try again: ");
                         }
-                        else Console.WriteLine("Incorrect number, try again: ");
-                    }
-                    article.PostDate = DateTime.Today.ToString();
-                    Console.Write("Please, input the text: ");
-                    article.Text = Console.ReadLine();
-                    Console.Write("Please, input the url of picture: ");
-                    article.Picture = Console.ReadLine();
-                    Console.Write("Please, input the Autor's name: ");
-                    article.Autor = Console.ReadLine();
-                    Console.Write("Publish now? (true or false): ");
-                    article.IsPublished = bool.Parse(Console.ReadLine());
-                    news[i] = article;
-                }
-                else if (type == "Quote")
-                {
-                    Quotes quote = new Quotes();
-                    Console.Write("Please, input the Id of Quote: ");
-                    while (true)
-                    {
-                        int.TryParse(Console.ReadLine(), out int idNews);
-                        if (idNews > 0)
+                        article.PostDate = DateTime.Today.ToString();
+                        Console.Write("Please, input the text: ");
+                        article.Text = Console.ReadLine();
+                        Console.Write("Please, input the url of picture: ");
+                        article.Picture = Console.ReadLine();
+                        Console.Write("Please, input the Autor's name: ");
+                        article.Autor = Console.ReadLine();
+                        Console.Write("Publish now? (true or false): ");
+                        article.IsPublished = bool.Parse(Console.ReadLine());
+                        news[i] = article;
+                        break;
+
+                    case "Quote":
+                        Quotes quote = new Quotes();
+                        Console.Write("Please, input the Id of Quote: ");
+                        while (true)
                         {
-                            quote.IdNews = idNews;
-                            break;
+                            int.TryParse(Console.ReadLine(), out int idNews);
+                            if (idNews > 0)
+                            {
+                                quote.IdNews = idNews;
+                                break;
+                            }
+                            else Console.WriteLine("Incorrect number, try again: ");
                         }
-                        else Console.WriteLine("Incorrect number, try again: ");
-                    }
-                    quote.PostDate = DateTime.Today.ToString();
-                    Console.Write("Please, input the text: ");
-                    quote.Quote = Console.ReadLine();
-                    Console.Write("Please, input the Autor's name: ");
-                    quote.QuoteAutor = Console.ReadLine();
-                    Console.Write("Publish now? (true or false): ");
-                    quote.IsPublished = bool.Parse(Console.ReadLine());
-                    news[i] = quote;
-                }
-                else if (type == "Picture")
-                {
-                    PicturesNews pictureNews = new PicturesNews();
-                    Console.Write("Please, input the Id of Picture News: ");
-                    while (true)
-                    {
-                        int.TryParse(Console.ReadLine(), out int idNews);
-                        if (idNews > 0)
+                        quote.PostDate = DateTime.Today.ToString();
+                        Console.Write("Please, input the text: ");
+                        quote.Quote = Console.ReadLine();
+                        Console.Write("Please, input the Autor's name: ");
+                        quote.QuoteAutor = Console.ReadLine();
+                        Console.Write("Publish now? (true or false): ");
+                        quote.IsPublished = bool.Parse(Console.ReadLine());
+                        news[i] = quote;
+                        break;
+                    case "Picture":
+                        PicturesNews pictureNews = new PicturesNews();
+                        Console.Write("Please, input the Id of Picture News: ");
+                        while (true)
                         {
-                            pictureNews.IdNews = idNews;
-                            break;
+                            int.TryParse(Console.ReadLine(), out int idNews);
+                            if (idNews > 0)
+                            {
+                                pictureNews.IdNews = idNews;
+                                break;
+                            }
+                            else Console.WriteLine("Incorrect number, try again: ");
                         }
-                        else Console.WriteLine("Incorrect number, try again: ");
-                    }
-                    pictureNews.PostDate = DateTime.Today.ToString();
-                    Console.Write("Please, input the url of picture: ");
-                    pictureNews.PictureUrl = Console.ReadLine();
-                    Console.Write("Publish now? (true or false): ");
-                    pictureNews.IsPublished = bool.Parse(Console.ReadLine());
-                    news[i] = pictureNews;
-                }
-                else if (type == "Show")
-                {
-                    for (int j = 0; j < i; j++)
-                    {
-                        news[0].ShowNews();
-                    }
-                }
+                        pictureNews.PostDate = DateTime.Today.ToString();
+                        Console.Write("Please, input the url of picture: ");
+                        pictureNews.PictureUrl = Console.ReadLine();
+                        Console.Write("Publish now? (true or false): ");
+                        pictureNews.IsPublished = bool.Parse(Console.ReadLine());
+                        news[i] = pictureNews;
+                        break;
+
+                    case "Show":
+                        for (int j = 0; j < i; j++)
+                        {
+                            news[j].ShowNews();
+                        }
+                        if (i != 0) i--;
+                        break;
+
+                    default:
+                        if (i != 0) i--;
+                        Console.WriteLine("Invalid input, try again");
+                        break;
+                } 
             }
-            
         }
     }
 }
