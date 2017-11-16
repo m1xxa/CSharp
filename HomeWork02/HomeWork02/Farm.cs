@@ -17,6 +17,5 @@ namespace HomeWork02
         {
             Console.WriteLine("Draw farm");
         }
-
     }
 }

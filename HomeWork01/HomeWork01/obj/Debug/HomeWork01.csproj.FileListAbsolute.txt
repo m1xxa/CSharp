@@ -1,7 +1,0 @@
-D:\intita\c#\HomeWork01\HomeWork01\bin\Debug\HomeWork01.exe.config
-D:\intita\c#\HomeWork01\HomeWork01\bin\Debug\HomeWork01.exe
-D:\intita\c#\HomeWork01\HomeWork01\bin\Debug\HomeWork01.pdb
-D:\intita\c#\HomeWork01\HomeWork01\obj\Debug\HomeWork01.csprojResolveAssemblyReference.cache
-D:\intita\c#\HomeWork01\HomeWork01\obj\Debug\HomeWork01.csproj.CoreCompileInputs.cache
-D:\intita\c#\HomeWork01\HomeWork01\obj\Debug\HomeWork01.exe
-D:\intita\c#\HomeWork01\HomeWork01\obj\Debug\HomeWork01.pdb
