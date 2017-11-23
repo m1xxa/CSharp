@@ -122,20 +122,21 @@ namespace HomeWork04
                     case "Show":
                         for (int j = 0; j < i; j++)
                         {
-                            News currentNews = news[j] as Article;
-                            if (currentNews != null)
+                            if (news[j] is Article isArticle)
                             {
-                                Console.WriteLine("its Article");
+                                Console.WriteLine($"{isArticle.IdNews}, {isArticle.PostDate}, {isArticle.ArticleText}, " +
+                                                  $"{isArticle.ArticlePicture}, {isArticle.ArticleAutor}, {isArticle.ArticleRating}," +
+                                                  $"{isArticle.ArticleRating}, {isArticle.ArticleIsPublished}");
                             }
-                            currentNews = news[j] as PicturesNews;
-                            if (currentNews != null)
+                            if (news[j] is PicturesNews isPictureNews)
                             {
-                                Console.WriteLine("its PictureNews");
+                                Console.WriteLine($"{isPictureNews.IdNews}, {isPictureNews.PostDate}, {isPictureNews.PictureUrl}, " +
+                                                  $"{isPictureNews.PictureRating}, {isPictureNews.PictureIsPublished}");
                             }
-                            currentNews = news[j] as Quotes;
-                            if (currentNews != null)
+                            if (news[j] is Quotes isQuote)
                             {
-                                Console.WriteLine("its Quote");
+                                Console.WriteLine($"{isQuote.IdNews}, {isQuote.PostDate}, {isQuote.Quote}, {isQuote.QuoteAutor}" +
+                                                  $"{isQuote.QuoteRating}, {isQuote.QuoteIsPublished}");
                             }
                         }
                         if (i != 0) i--;
