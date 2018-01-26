@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace CRUDExample
 {
+
+
     public static class DbHelper
     {
         public static List<Product> ManageDb(string conString, string dbName)
@@ -138,11 +141,10 @@ namespace CRUDExample
             {
                 Console.WriteLine("Please enter the name of database");
                 dbName = Console.ReadLine();
-
+                
                 using (var connection = new SqlConnection(conString))
                 {
                     var querry = $@"CREATE DATABASE {dbName}";
-
                     var command = new SqlCommand(querry, connection);
                     connection.Open();
                     command.ExecuteNonQuery();

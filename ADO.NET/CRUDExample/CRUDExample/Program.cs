@@ -13,6 +13,7 @@ namespace CRUDExample
         static void Main(string[] args)
         {
             var conString = ConfigurationManager.AppSettings["ConnectionString"];
+            
             string dbName = DbHelper.CreateDb(conString);
             List<Product> listOfProducts  = DbHelper.ManageDb(conString, dbName);
             
@@ -21,8 +22,6 @@ namespace CRUDExample
                 Console.WriteLine($"{currentProduct.Id} {currentProduct.Name} {currentProduct.Definition} {currentProduct.Picture}");
             }
         }
-
-      
     }
     
 }
