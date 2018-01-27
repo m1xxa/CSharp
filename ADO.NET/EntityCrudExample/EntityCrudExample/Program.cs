@@ -208,7 +208,24 @@ namespace EntityCrudExample
                             break;
 
                         case 6:
-                            throw new NotImplementedException();
+                            Console.WriteLine("Enter user id");
+                            try
+                            {
+                                userId = Guid.Parse(Console.ReadLine());
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Wrong id");
+                                continue;
+                            }
+
+                            foreach (var corder in context.Orders)
+                            {
+                                if(corder.IdUser.Id == userId)
+                                    Console.WriteLine($"{corder.Id} {corder.Product} {corder.Price} {corder.Qty} " +
+                                                      $"{corder.IdUser.FirstName} {corder.IdUser.LastName}");
+                            }
+
                             break;
 
                         case 7:
