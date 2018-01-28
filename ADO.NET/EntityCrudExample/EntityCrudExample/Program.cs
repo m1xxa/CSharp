@@ -8,12 +8,13 @@ namespace EntityCrudExample
         static void Main()
         {
             string table = null;
+
             while (true)
             {
-                Console.WriteLine("Please select table:");
-                Console.WriteLine("1. Users");
-                Console.WriteLine("2. Orders");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine(@"Please select table:");
+                Console.WriteLine(@"1. Users");
+                Console.WriteLine(@"2. Orders");
+                Console.WriteLine(@"3. Exit");
 
                 Int32.TryParse(Console.ReadLine(), out int userChoise);
                 switch (userChoise)
@@ -32,9 +33,9 @@ namespace EntityCrudExample
                 if (table != null)
                 {
                     ManageTable(table);
-                    break;
                 }
-                    
+
+                break;
             }
         }
 
@@ -49,7 +50,7 @@ namespace EntityCrudExample
                     ManageOrders();
                     break;
                 default:
-                    Console.WriteLine("Wrong name!");
+                    Console.WriteLine(@"Wrong name!");
                     break;
             }
         }
@@ -58,20 +59,20 @@ namespace EntityCrudExample
         {
             while (true)
             {
-                Console.WriteLine("Please, select command: (1-6)");
-                Console.WriteLine("1. Add new order");
-                Console.WriteLine("2. View order info by id");
-                Console.WriteLine("3. View all orders");
-                Console.WriteLine("4. Modify order by id");
-                Console.WriteLine("5. Delete order by id");
-                Console.WriteLine("6. Get orders by user id");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine(@"Please, select command: (1-6)");
+                Console.WriteLine(@"1. Add new order");
+                Console.WriteLine(@"2. View order info by id");
+                Console.WriteLine(@"3. View all orders");
+                Console.WriteLine(@"4. Modify order by id");
+                Console.WriteLine(@"5. Delete order by id");
+                Console.WriteLine(@"6. Get orders by user id");
+                Console.WriteLine(@"7. Exit");
 
                 bool isExit = false;
 
                 using (var context = new StoreDbContext())
                 {
-                    Console.Write("Choise: (1-6) ");
+                    Console.Write(@"Choise: (1-7) ");
                     Int32.TryParse(Console.ReadLine(), out int userChoise);
                     Guid userId;
                     Guid orderId;
@@ -84,27 +85,27 @@ namespace EntityCrudExample
                         case 1:
                             var newOrder = new Orders();
                             newOrder.Id = Guid.NewGuid();
-                            Console.Write("Product: ");
+                            Console.Write(@"Product: ");
                             newOrder.Product = Console.ReadLine();
-                            Console.Write("Price: ");
+                            Console.Write(@"Price: ");
                             if (Int32.TryParse(Console.ReadLine(), out int price))
                             {
                                 newOrder.Price = price;
                             }
-                            Console.Write("Quantity: ");
+                            Console.Write(@"Quantity: ");
                             if (Int32.TryParse(Console.ReadLine(), out int qty))
                             {
                                 newOrder.Qty = qty;
                             }
 
-                            Console.WriteLine("User id");
+                            Console.WriteLine(@"User id");
                             try
                             {
                                 userId = Guid.Parse(Console.ReadLine());
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Wrong id");
+                                Console.WriteLine(@"Wrong id");
                                 continue;
                             }
 
@@ -117,31 +118,31 @@ namespace EntityCrudExample
                             break;
 
                         case 2:
-                            Console.WriteLine("Enter order id");
+                            Console.WriteLine(@"Enter order id");
                             try
                             {
                                 orderId = Guid.Parse(Console.ReadLine());
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Wrong id");
+                                Console.WriteLine(@"Wrong id");
                                 continue;
                             }
 
                             var order = context.Orders.Find(orderId);
                             if (order != null)
-                                Console.WriteLine($"{order.Id} {order.Product} {order.Price} {order.Qty} {order.IdUser}");
+                                Console.WriteLine($@"{order.Id} {order.Product} {order.Price} {order.Qty} {order.IdUser}");
                             break;
 
                         case 3:
                             foreach (var corder in context.Orders)
                             {
-                                Console.WriteLine($"{corder.Id} {corder.Product} {corder.Price} {corder.Qty} {corder.IdUser}");
+                                Console.WriteLine($@"{corder.Id} {corder.Product} {corder.Price} {corder.Qty} {corder.IdUser}");
                             }
                             break;
 
                         case 4:
-                            Console.WriteLine("Enter order id");
+                            Console.WriteLine(@"Enter order id");
 
                             try
                             {
@@ -149,7 +150,7 @@ namespace EntityCrudExample
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Wrong id");
+                                Console.WriteLine(@"Wrong id");
                                 continue;
                             }
 
