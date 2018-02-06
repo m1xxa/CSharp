@@ -61,21 +61,19 @@ namespace QuerryExample
                             case 0:
                                 assistant.Working();
                                 Console.WriteLine($"Buyer {buyer.Id} bought 1 product " +
-                                                  $"from seller {stand.Assistants.IndexOf(assistant) + 1}");
+                                            $"from seller {stand.Assistants.IndexOf(assistant) + 1}");
                                 buyer.IsBuyFirst = true;
                                 break;
                             case 1:
                                 assistant.Working();
-                                Console.WriteLine(
-                                    $"Buyer {buyer.Id} bought 2 product " +
-                                    $"from seller {stand.Assistants.IndexOf(assistant) + 1}");
+                                Console.WriteLine($"Buyer {buyer.Id} bought 2 product " +
+                                            $"from seller {stand.Assistants.IndexOf(assistant) + 1}");
                                 buyer.IsBuySecond = true;
                                 break;
                             case 2:
                                 assistant.Working();
-                                Console.WriteLine(
-                                    $"Buyer {buyer.Id} bought 3 product " +
-                                    $"from seller {stand.Assistants.IndexOf(assistant) + 1}");
+                                Console.WriteLine($"Buyer {buyer.Id} bought 3 product " +
+                                            $"from seller {stand.Assistants.IndexOf(assistant) + 1}");
                                 buyer.IsBuyThird = true;
                                 break;
                         }
