@@ -6,8 +6,6 @@ namespace QuerryExample
 {
     class Program
     {
-        static readonly Object Locker = new Object();
-
         static void Main(string[] args)
         {
             Random random = new Random();
@@ -19,7 +17,7 @@ namespace QuerryExample
             while (true)
             {
                 Thread.Sleep(random.Next(0, 10) * 500);
-                int numberOfBuyers = random.Next(0, 5);
+                int numberOfBuyers = random.Next(0, 10);
                 for (int i = 0; i < numberOfBuyers; i++)
                 {
                     listBuyers.Add(new Buyer(idBuyer.ToString()));
