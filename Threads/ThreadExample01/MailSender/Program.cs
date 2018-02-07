@@ -31,7 +31,7 @@ namespace MailSender
             while (true)
             {
                 Thread.Sleep(random.Next(0, 10) * 500);
-                int numberOfMessage = random.Next(0, 50);
+                int numberOfMessage = random.Next(30000, 50000);
                 List<Message> list = new List<Message>();
 
                 for (int i = 0; i < numberOfMessage; i++)
@@ -52,9 +52,14 @@ namespace MailSender
                     index++;
                 }
 
-                reciveMessageServer.ReciveMessage(list);
-                reciveMessageServer.SaveToServer(storageServer);
-                proccedMessageServer.ProceedMessage(storageServer);
+                Thread reciveMessageThread = new Thread(() => reciveMessageServer.ReciveMessage(list));
+                reciveMessageThread.Start();
+
+                Thread saveMessageThread = new Thread(() => reciveMessageServer.SaveToServer(storageServer));
+                saveMessageThread.Start();
+
+                Thread proccedServerThread = new Thread(() => proccedMessageServer.ProceedMessage(storageServer));
+                proccedServerThread.Start();
             }
         }
     }

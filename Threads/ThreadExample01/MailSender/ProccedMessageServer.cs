@@ -44,11 +44,8 @@ namespace MailSender
                     {
                         sw.WriteLine(message + " " + message.Text);
                     }
-
                 }
             }
-           
-            
         }
     }
 }
